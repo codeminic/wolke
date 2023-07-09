@@ -1,0 +1,411 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GND #PWR?
+U 1 1 64A13806
+P 1050 4500
+F 0 "#PWR?" H 1050 4250 50  0001 C CNN
+F 1 "GND" H 1055 4327 50  0000 C CNN
+F 2 "" H 1050 4500 50  0001 C CNN
+F 3 "" H 1050 4500 50  0001 C CNN
+	1    1050 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 64A1542E
+P 1000 1150
+F 0 "#PWR?" H 1000 1000 50  0001 C CNN
+F 1 "+12V" H 1015 1323 50  0000 C CNN
+F 2 "" H 1000 1150 50  0001 C CNN
+F 3 "" H 1000 1150 50  0001 C CNN
+	1    1000 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_Push SW1
+U 1 1 64A18B6F
+P 2100 2300
+F 0 "SW1" V 2146 2252 50  0000 R CNN
+F 1 "SW_ON" V 2055 2252 50  0000 R CNN
+F 2 "" H 2100 2500 50  0001 C CNN
+F 3 "~" H 2100 2500 50  0001 C CNN
+	1    2100 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_Push SW2
+U 1 1 64A19383
+P 2600 2300
+F 0 "SW2" V 2646 2252 50  0000 R CNN
+F 1 "SW_COL" V 2555 2252 50  0000 R CNN
+F 2 "" H 2600 2500 50  0001 C CNN
+F 3 "~" H 2600 2500 50  0001 C CNN
+	1    2600 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_Push SW3
+U 1 1 64A197D6
+P 3100 2300
+F 0 "SW3" V 3146 2252 50  0000 R CNN
+F 1 "SW_LUM" V 3055 2252 50  0000 R CNN
+F 2 "" H 3100 2500 50  0001 C CNN
+F 3 "~" H 3100 2500 50  0001 C CNN
+	1    3100 2300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 64A1A2D7
+P 3400 4100
+F 0 "D?" H 3393 4317 50  0000 C CNN
+F 1 "LED" H 3393 4226 50  0000 C CNN
+F 2 "" H 3400 4100 50  0001 C CNN
+F 3 "~" H 3400 4100 50  0001 C CNN
+	1    3400 4100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L MCU_Module:WeMos_D1_mini U2
+U 1 1 64A1D2F9
+P 4050 3000
+F 0 "U2" H 4050 2111 50  0000 C CNN
+F 1 "WeMos_D1_mini" H 4050 2020 50  0000 C CNN
+F 2 "Module:WEMOS_D1_mini_light" H 4050 1850 50  0001 C CNN
+F 3 "https://wiki.wemos.cc/products:d1:d1_mini#documentation" H 2200 1850 50  0001 C CNN
+	1    4050 3000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Regulator_Linear:MC78M05_TO252 U1
+U 1 1 64A1E915
+P 1750 1500
+F 0 "U1" H 1750 1742 50  0000 C CNN
+F 1 "MC78M05_TO252" H 1750 1651 50  0000 C CNN
+F 2 "Package_TO_SOT_SMD:TO-252-2" H 1750 1725 50  0001 C CIN
+F 3 "https://www.onsemi.com/pub/Collateral/MC78M00-D.PDF" H 1750 1450 50  0001 C CNN
+	1    1750 1500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4150 1500 4150 2200
+Wire Wire Line
+	4050 3800 4050 4500
+Wire Wire Line
+	1050 4500 1750 4500
+Wire Wire Line
+	1750 1800 1750 4500
+Wire Wire Line
+	3700 3200 3650 3200
+Wire Wire Line
+	3700 3100 3650 3100
+Wire Wire Line
+	3400 4250 3400 4500
+$Comp
+L Device:R R4
+U 1 1 64A39A51
+P 3400 3650
+F 0 "R4" H 3470 3696 50  0000 L CNN
+F 1 "R" H 3470 3605 50  0000 L CNN
+F 2 "" V 3330 3650 50  0001 C CNN
+F 3 "~" H 3400 3650 50  0001 C CNN
+	1    3400 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3650 3400 3400 3400
+Wire Wire Line
+	3400 3400 3400 3500
+Wire Wire Line
+	3400 3800 3400 3950
+Connection ~ 3400 4500
+Wire Wire Line
+	3400 4500 4050 4500
+Connection ~ 3650 3200
+Connection ~ 3650 3100
+Wire Wire Line
+	3650 3300 3100 3300
+Wire Wire Line
+	3650 3200 2950 3200
+Wire Wire Line
+	2800 3100 2800 3400
+Wire Wire Line
+	3650 3100 2800 3100
+Wire Wire Line
+	2950 3200 2950 3400
+Wire Wire Line
+	3100 3300 3100 3400
+Text GLabel 2800 3400 3    50   Input ~ 0
+LED_BLUE
+Text GLabel 2950 3400 3    50   Input ~ 0
+LED_GREEN
+Text GLabel 3100 3400 3    50   Input ~ 0
+LED_RED
+$Comp
+L Device:R R3
+U 1 1 64A40DDB
+P 2600 3150
+F 0 "R3" H 2670 3196 50  0000 L CNN
+F 1 "10k" H 2670 3105 50  0000 L CNN
+F 2 "" V 2530 3150 50  0001 C CNN
+F 3 "~" H 2600 3150 50  0001 C CNN
+	1    2600 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 64A41C5B
+P 2350 3150
+F 0 "R2" H 2420 3196 50  0000 L CNN
+F 1 "10k" H 2420 3105 50  0000 L CNN
+F 2 "" V 2280 3150 50  0001 C CNN
+F 3 "~" H 2350 3150 50  0001 C CNN
+	1    2350 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 64A427FA
+P 2100 3150
+F 0 "R1" H 2170 3196 50  0000 L CNN
+F 1 "10k" H 2170 3105 50  0000 L CNN
+F 2 "" V 2030 3150 50  0001 C CNN
+F 3 "~" H 2100 3150 50  0001 C CNN
+	1    2100 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 3300 2600 4500
+Connection ~ 2600 4500
+Wire Wire Line
+	2600 4500 3400 4500
+Wire Wire Line
+	2350 3300 2350 4500
+Connection ~ 2350 4500
+Wire Wire Line
+	2350 4500 2600 4500
+Wire Wire Line
+	2100 3300 2100 4500
+Connection ~ 2100 4500
+Wire Wire Line
+	2100 4500 2350 4500
+Wire Wire Line
+	2350 3000 2350 2900
+Wire Wire Line
+	2100 3000 2100 2800
+Wire Wire Line
+	2100 2800 3650 2800
+Wire Wire Line
+	2350 2900 2600 2900
+Wire Wire Line
+	2600 3000 3100 3000
+Wire Wire Line
+	1450 1500 1550 1500
+Wire Wire Line
+	2050 1500 2100 1500
+Wire Wire Line
+	2100 2100 2100 1500
+Connection ~ 2100 1500
+Wire Wire Line
+	2100 1500 2600 1500
+Wire Wire Line
+	2600 2100 2600 1500
+Connection ~ 2600 1500
+Wire Wire Line
+	2600 1500 3100 1500
+Wire Wire Line
+	3100 2100 3100 1500
+Connection ~ 3100 1500
+Wire Wire Line
+	3100 1500 4150 1500
+Wire Wire Line
+	2100 2500 2100 2800
+Connection ~ 2100 2800
+Wire Wire Line
+	2600 2500 2600 2900
+Connection ~ 2600 2900
+Wire Wire Line
+	2600 2900 3650 2900
+Wire Wire Line
+	3100 2550 3100 3000
+Connection ~ 3100 3000
+Wire Wire Line
+	3100 3000 3650 3000
+Connection ~ 1750 4500
+Wire Wire Line
+	1750 4500 2100 4500
+Wire Wire Line
+	1000 1150 1000 1200
+Wire Wire Line
+	1000 1500 1450 1500
+Connection ~ 1450 1500
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 64A63D93
+P 6650 4200
+F 0 "Q?" H 6840 4246 50  0000 L CNN
+F 1 "2N3904" H 6840 4155 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 6850 4125 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 6650 4200 50  0001 L CNN
+	1    6650 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 64A6B3CD
+P 5650 3200
+F 0 "Q?" H 5840 3246 50  0000 L CNN
+F 1 "2N3904" H 5840 3155 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5850 3125 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 5650 3200 50  0001 L CNN
+	1    5650 3200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R7
+U 1 1 64A6BF6F
+P 5150 4200
+F 0 "R7" V 5357 4200 50  0000 C CNN
+F 1 "480" V 5266 4200 50  0000 C CNN
+F 2 "" V 5080 4200 50  0001 C CNN
+F 3 "~" H 5150 4200 50  0001 C CNN
+	1    5150 4200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:R R5
+U 1 1 64A79CD9
+P 5150 3200
+F 0 "R5" V 5357 3200 50  0000 C CNN
+F 1 "480" V 5266 3200 50  0000 C CNN
+F 2 "" V 5080 3200 50  0001 C CNN
+F 3 "~" H 5150 3200 50  0001 C CNN
+	1    5150 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	5300 3200 5450 3200
+$Comp
+L Device:R R6
+U 1 1 64A78F92
+P 5150 3700
+F 0 "R6" V 5357 3700 50  0000 C CNN
+F 1 "480" V 5266 3700 50  0000 C CNN
+F 2 "" V 5080 3700 50  0001 C CNN
+F 3 "~" H 5150 3700 50  0001 C CNN
+	1    5150 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 64A6A18C
+P 6150 3700
+F 0 "Q?" H 6340 3746 50  0000 L CNN
+F 1 "2N3904" H 6340 3655 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 6350 3625 50  0001 L CIN
+F 3 "https://www.onsemi.com/pub/Collateral/2N3903-D.PDF" H 6150 3700 50  0001 L CNN
+	1    6150 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5300 3700 5950 3700
+Wire Wire Line
+	5300 4200 6450 4200
+Wire Wire Line
+	6750 4400 6750 4500
+Wire Wire Line
+	6750 4500 6250 4500
+Connection ~ 4050 4500
+Wire Wire Line
+	6250 3900 6250 4500
+Connection ~ 6250 4500
+Wire Wire Line
+	6250 4500 5750 4500
+Wire Wire Line
+	5750 3400 5750 4500
+Connection ~ 5750 4500
+Wire Wire Line
+	5750 4500 4050 4500
+Text GLabel 4900 3200 0    50   Input ~ 0
+LED_BLUE
+Text GLabel 4900 3700 0    50   Input ~ 0
+LED_GREEN
+Text GLabel 4900 4200 0    50   Input ~ 0
+LED_RED
+Wire Wire Line
+	4900 3200 5000 3200
+Wire Wire Line
+	4900 3700 5000 3700
+Wire Wire Line
+	4900 4200 5000 4200
+Connection ~ 1000 1200
+Wire Wire Line
+	1000 1200 1000 1500
+$Comp
+L Device:LED D?
+U 1 1 64A9CDFE
+P 6250 2350
+F 0 "D?" H 6243 2567 50  0000 C CNN
+F 1 "LED" H 6243 2476 50  0000 C CNN
+F 2 "" H 6250 2350 50  0001 C CNN
+F 3 "~" H 6250 2350 50  0001 C CNN
+	1    6250 2350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 64A9FBFD
+P 5750 2350
+F 0 "D?" H 5743 2567 50  0000 C CNN
+F 1 "LED" H 5743 2476 50  0000 C CNN
+F 2 "" H 5750 2350 50  0001 C CNN
+F 3 "~" H 5750 2350 50  0001 C CNN
+	1    5750 2350
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D?
+U 1 1 64AA0F4C
+P 6750 2350
+F 0 "D?" H 6743 2567 50  0000 C CNN
+F 1 "LED" H 6743 2476 50  0000 C CNN
+F 2 "" H 6750 2350 50  0001 C CNN
+F 3 "~" H 6750 2350 50  0001 C CNN
+	1    6750 2350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1000 1200 5750 1200
+Wire Wire Line
+	6750 4000 6750 2500
+Wire Wire Line
+	6250 3500 6250 2500
+Wire Wire Line
+	5750 3000 5750 2500
+Wire Wire Line
+	5750 2200 5750 1200
+Connection ~ 5750 1200
+Wire Wire Line
+	5750 1200 6250 1200
+Wire Wire Line
+	6250 2200 6250 1200
+Connection ~ 6250 1200
+Wire Wire Line
+	6250 1200 6750 1200
+Wire Wire Line
+	6750 1200 6750 2200
+$EndSCHEMATC
