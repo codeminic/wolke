@@ -35,7 +35,8 @@ boolean switchOn = false;
 int activeMode = MODE_WHITE;
 
 // brightness
-int brightness = 0;
+int lampBrightness = 100;
+int brightnessPicking = false;
 
 // color picking
 int previousSwitchColState = 0;
@@ -50,12 +51,12 @@ int lastSwitchColPressed = 0;
 
 // white color mode
 int whiteColorModeRed = 255;
-int whiteColorModeGreen = 200;
-int whiteColorModeBlue = 200;
+int whiteColorModeGreen = 150;
+int whiteColorModeBlue = 150;
 
 // single color mode
-int singleColorModeRed = 127;
-int singleColorModeGreen = 127;
+int singleColorModeRed = 255;
+int singleColorModeGreen = 0;
 int singleColorModeBlue = 0;
 
 // fading color mode
@@ -116,6 +117,11 @@ void IRAM_ATTR onSwitchColChanged()
   }
 }
 
+void turnOn(uint8_t pin, int brightness)
+{
+  analogWrite(pin, brightness * (lampBrightness / 100));
+}
+
 void switchOff()
 {
   analogWrite(OUT_RED, 0);
@@ -165,7 +171,6 @@ void loop()
     return;
   }
 
-  // bool colorPicking = digitalRead(SWITCH_LUM) == 1;
   if (colorPicking)
   {
     Serial.println("Color picking");
@@ -205,20 +210,28 @@ void loop()
     }
   }
 
+  if (brightnessPicking)
+  {
+    if (lampBrightness < 100)
+      lampBrightness += 1;
+    else
+      lampBrightness = 10;
+  }
+
   switch (activeMode)
   {
   case MODE_WHITE:
   {
-    analogWrite(OUT_RED, whiteColorModeRed);
-    analogWrite(OUT_GREEN, whiteColorModeGreen);
-    analogWrite(OUT_BLUE, whiteColorModeBlue);
+    turnOn(OUT_RED, whiteColorModeRed);
+    turnOn(OUT_GREEN, whiteColorModeGreen);
+    turnOn(OUT_BLUE, whiteColorModeBlue);
     break;
   }
   case MODE_COLOUR:
   {
-    analogWrite(OUT_RED, singleColorModeRed);
-    analogWrite(OUT_GREEN, singleColorModeGreen);
-    analogWrite(OUT_BLUE, singleColorModeBlue);
+    turnOn(OUT_RED, singleColorModeRed);
+    turnOn(OUT_GREEN, singleColorModeGreen);
+    turnOn(OUT_BLUE, singleColorModeBlue);
     break;
   }
   case MODE_FADING:
@@ -253,9 +266,9 @@ void loop()
       fadingCounter = 0;
       currentTransition = (currentTransition + 1) % 3;
     }
-    analogWrite(OUT_RED, fadingColorModeRed);
-    analogWrite(OUT_GREEN, fadingColorModeGreen);
-    analogWrite(OUT_BLUE, fadingColorModeBlue);
+    turnOn(OUT_RED, fadingColorModeRed);
+    turnOn(OUT_GREEN, fadingColorModeGreen);
+    turnOn(OUT_BLUE, fadingColorModeBlue);
 
     break;
   }
